@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ana & Lulu — Nosso Cantinho Especial ❤️</title>
+  <meta name="description" content="Um joguinho e uma declaração especial criada com todo o carinho pelo Lulu para a Ana Carolina Manke." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💖</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Dancing+Script:wght@700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-dark: #0d0914;
+      --card-bg: rgba(26, 16, 38, 0.75);
+      --card-border: rgba(244, 114, 182, 0.2);
+      --pink-glow: #ec4899;
+      --rose-accent: #f43f5e;
+      --purple-accent: #a855f7;
+      --gold-accent: #fbbf24;
+      --text-main: #fdf2f8;
+      --text-muted: #f472b6;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Floating Orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(130px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+      animation: floatOrb 18s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 500px;
+      height: 500px;
+      background: var(--pink-glow);
+      top: -100px;
+      left: -100px;
+    }
+
+    .orb-2 {
+      width: 550px;
+      height: 550px;
+      background: var(--purple-accent);
+      bottom: -150px;
+      right: -100px;
+      animation-delay: -9s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(50px, 35px) scale(1.1); }
+    }
+
+    /* Floating Hearts Background Particle Container */
+    #hearts-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bg-heart {
+      position: absolute;
+      font-size: 1.5rem;
+      opacity: 0.25;
+      animation: floatUp 12s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(105vh) rotate(0deg); opacity: 0.1; }
+      50% { opacity: 0.4; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Container */
+    .app-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 680px;
+      text-align: center;
+    }
+
+    /* Glass Card */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 2rem;
+      padding: 2.5rem 2rem;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(236, 72, 153, 0.15);
+      animation: fadeIn 0.6s ease-out;
+      transition: all 0.4s ease;
+    }
+
+    /* Screen Management */
+    .screen {
+      display: none;
+    }
+    .screen.active {
+      display: block;
+    }
+
+    /* Typography */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      background: rgba(244, 63, 94, 0.15);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fda4af;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f472b6 60%, #e879f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.desc {
+      font-size: 1.1rem;
+      color: #fbcfe8;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .highlight-ana {
+      color: var(--gold-accent);
+      font-weight: 700;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, var(--rose-accent), var(--purple-accent));
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(244, 63, 94, 0.4);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 35px rgba(244, 63, 94, 0.6);
+    }
+
+    .btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* Quiz Stage Styles */
+    .quiz-progress {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.active {
+      background: var(--pink-glow);
+      box-shadow: 0 0 12px var(--pink-glow);
+      transform: scale(1.2);
+    }
+
+    .quiz-question {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.75rem;
+      line-height: 1.4;
+    }
+
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .option-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: 1.25rem;
+      padding: 1.1rem 1.4rem;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .option-btn:hover {
+      background: rgba(244, 114, 182, 0.15);
+      border-color: var(--pink-glow);
+      transform: translateX(4px);
+    }
+
+    .option-btn.correct {
+      background: rgba(34, 197, 94, 0.25) !important;
+      border-color: #22c55e !important;
+      color: #86efac !important;
+    }
+
+    .option-btn.wrong {
+      background: rgba(239, 68, 68, 0.2) !important;
+      border-color: #ef4444 !important;
+      color: #fca5a5 !important;
+    }
+
+    .feedback-msg {
+      margin-top: 1rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      min-height: 28px;
+    }
+
+    /* Mini Game Arcade Stage */
+    .arcade-box {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      background: rgba(13, 9, 20, 0.8);
+      border: 2px dashed rgba(244, 114, 182, 0.4);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .arcade-target {
+      position: absolute;
+      font-size: 2.2rem;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.15s ease;
+      animation: popTarget 0.3s ease-out;
+    }
+
+    .arcade-target:hover {
+      transform: scale(1.3);
+    }
+
+    @keyframes popTarget {
+      0% { transform: scale(0); }
+      80% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .score-board {
+      display: flex;
+      justify-content: space-around;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold-accent);
+      margin-bottom: 1rem;
+    }
+
+    /* Letter / Final Stage */
+    .letter-container {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      border-radius: 1.5rem;
+      padding: 1.75rem;
+      text-align: left;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .letter-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--pink-glow);
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .letter-body {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #fce7f3;
+      white-space: pre-line;
+      margin-bottom: 1.5rem;
+    }
+
+    .letter-handwriting {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: var(--gold-accent);
+      text-align: right;
+      margin-top: 1rem;
+    }
+
+    .kiss-counter {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--gold-accent);
+      margin-top: 1rem;
+    }
+
+    /* Floating Kiss Emoji */
+    .floating-kiss {
+      position: fixed;
+      font-size: 2.5rem;
+      pointer-events: none;
+      z-index: 100;
+      animation: floatKiss 1.5s ease-out forwards;
+    }
+
+    @keyframes floatKiss {
+      0% { opacity: 1; transform: translateY(0) scale(0.5) rotate(0deg); }
+      100% { opacity: 0; transform: translateY(-120px) scale(1.5) rotate(20deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Inside Joke Chips */
+    .joke-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin: 1.25rem 0 2rem;
+    }
+
+    .chip {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.85rem;
+      color: #fbcfe8;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 500px) {
+      .card {
+        padding: 2rem 1.25rem;
+      }
+      h1 {
+        font-size: 2.1rem;
+      }
+      .quiz-question {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- Background Hearts -->
+  <div id="hearts-bg"></div>
+
+  <div class="app-container">
+    
+    <!-- TELAS DO JOGO -->
+
+    <!-- SCREEN 1: INTRODUÇÃO -->
+    <div id="screen-intro" class="card screen active">
+      <div class="badge">
+        <span>💌</span> Para Ana Carolina Manke
+      </div>
+
+      <h1>Nosso Cantinho & Mini Joguinho ❤️</h1>
+
+      <p class="desc">
+        Oi, minha gata! O seu <span class="highlight-ana">Lulu</span> preparou este espaço especial com as nossas piadas internas, nossas lembranças e muito carinho.
+      </p>
+
+      <div class="joke-chips">
+        <span class="chip">🍊 Tangerina descascada</span>
+        <span class="chip">👑 Tratamento de Princesa</span>
+        <span class="chip">🚿 Banho no escuro</span>
+        <span class="chip">🔑 Chaveirinho</span>
+        <span class="chip">☕ Cafeína</span>
+      </div>
+
+      <button class="btn" onclick="startGame()">
+        <span>🎮</span> Iniciar o Joguinho da Ana!
+      </button>
+    </div>
+
+    <!-- SCREEN 2: QUIZ / PERGUNTAS -->
+    <div id="screen-quiz" class="card screen">
+      <div class="quiz-progress">
+        <div class="progress-dot active" id="dot-1"></div>
+        <div class="progress-dot" id="dot-2"></div>
+        <div class="progress-dot" id="dot-3"></div>
+        <div class="progress-dot" id="dot-4"></div>
+      </div>
+
+      <div id="quiz-content">
+        <!-- Injetado via JS -->
+      </div>
+    </div>
+
+    <!-- SCREEN 3: MINI GAME ARCADE (Catar Corações & Chaveirinhos) -->
+    <div id="screen-arcade" class="card screen">
+      <div class="badge">
+        <span>⚡</span> Desafio Final da Princesa
+      </div>
+
+      <h2>Capture os Corações & Chaveirinhos! 🔑💖</h2>
+      <p class="desc" style="font-size: 0.95rem; margin-bottom: 1rem;">
+        Clique rápido nos corações e chaveirinhos para acumular "Pontos de Amor" antes do tempo acabar!
+      </p>
+
+      <div class="score-board">
+        <div>Pontos: <span id="arcade-score">0</span></div>
+        <div>Tempo: <span id="arcade-timer">12</span>s</div>
+      </div>
+
+      <div class="arcade-box" id="arcade-box">
+        <!-- Alvos gerados via JS -->
+      </div>
+    </div>
+
+    <!-- SCREEN 4: DECLARAÇÃO FINAL & CARTA -->
+    <div id="screen-final" class="card screen">
+      <div class="badge">
+        <span>👑</span> Parabéns! Você Venceu Tudo!
+      </div>
+
+      <h1>Para o Meu Denguinho 💕</h1>
+
+      <div class="letter-container">
+        <div class="letter-header">
+          <span>De: Lulu</span>
+          <span>Para: Ana Carolina Manke</span>
+        </div>
+
+        <div class="letter-body" id="letter-text">
+"É engraçado pensar que tudo começou com uma simples cantada na balada... e, do nada, você foi deixando de ser 'só uma cantada' e virou a pessoa mais especial da minha vida! 🥹❤️
+
+Mesmo nos dias de enxaqueca, banho no escuro e tangerina descascada, saiba que eu amo cuidar de você e te dar todo o tratamento de princesa que você merece.
+
+Eu amo você, minha gata lindona! 🤏🏻❤️"
+        </div>
+
+        <div class="letter-handwriting">
+          Com todo meu amor, seu Lulu. 💖
+        </div>
+      </div>
+
+      <button class="btn" id="btn-kiss" onclick="giveKiss()">
+        <span>😘</span> Cobrar Beijos & Amassos!
+      </button>
+
+      <div class="kiss-counter" id="kiss-count-text">
+        Beijos Cobrados: <span id="kiss-count">0</span>x 💋
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    // ── GERAÇÃO DE CORAÇÕES NO FUNDO ──
+    const heartsBg = document.getElementById('hearts-bg');
+    const heartEmojis = ['💖', '💕', '💗', '✨', '🌸', '🍊'];
+    for (let i = 0; i < 22; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'bg-heart';
+      heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDelay = Math.random() * 10 + 's';
+      heart.style.animationDuration = (8 + Math.random() * 8) + 's';
+      heartsBg.appendChild(heart);
+    }
+
+    // ── QUESTÕES DO QUIZ (Inside Jokes) ──
+    const quizQuestions = [
+      {
+        question: "1. Como tudo começou entre a Ana e o Lulu?",
+        options: [
+          { text: "Com uma cantada lendária na balada (que o Lulu jura que nem sabe fazer!) 💃🍻", correct: true, feedback: "Exatamente! E a Ana fingiu que gostou! 😂❤️" },
+          { text: "Numa fila de supermercado comprando tangerina 🍊", correct: false, feedback: "Quase! Mas foi na balada!" },
+          { text: "Tentando adivinhar quem tomaria mais cafeína ☕", correct: false, feedback: "Não! Foi com a famosa cantada!" }
+        ]
+      },
+      {
+        question: "2. Qual é o kit oficial de tratamento para o domingo de enxaqueca da Ana?",
+        options: [
+          { text: "Correr 10km no sol da tarde ☀️", correct: false, feedback: "Jamais! Tratamento de princesa primeiro!" },
+          { text: "Banho no escuro + Cobertinhas + Tangerina descascada pelo papai + Muita água! 👑🍊💧", correct: true, feedback: "Perfeito! Tratamento VIP de Princesa! 👑✨" },
+          { text: "Comer pimenta e ouvir música alta 🔊", correct: false, feedback: "De jeito nenhum!" }
+        ]
+      },
+      {
+        question: "3. Qual o truque supremo da Ana para ficar quentinha nas cobertas?",
+        options: [
+          { text: "Roubar o casaco do pai por cima do pijama curto! 🧥💤", correct: true, feedback: "Acertou! A gata sabe muito! 🥹❤️" },
+          { text: "Ligar 3 aquecedores no máximo 🔥", correct: false, feedback: "O casaco do papai é mais estiloso!" },
+          { text: "Ficar sem cobertas congelando 🥶", correct: false, feedback: "Não! Pijaminha + casaco roubado!" }
+        ]
+      }
+    ];
+
+    let currentQuestionIdx = 0;
+    let kissCount = 0;
+
+    // ── NAVEGAÇÃO DE TELAS ──
+    function showScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(screenId).classList.add('active');
+    }
+
+    function startGame() {
+      currentQuestionIdx = 0;
+      showScreen('screen-quiz');
+      renderQuestion();
+    }
+
+    // ── LÓGICA DO QUIZ ──
+    function renderQuestion() {
+      const q = quizQuestions[currentQuestionIdx];
+      
+      // Update dots
+      for (let i = 1; i <= 4; i++) {
+        const dot = document.getElementById(`dot-${i}`);
+        if (i === currentQuestionIdx + 1) dot.className = 'progress-dot active';
+        else dot.className = 'progress-dot';
+      }
+
+      const container = document.getElementById('quiz-content');
+      container.innerHTML = `
+        <div class="quiz-question">${q.question}</div>
+        <div class="options-grid">
+          ${q.options.map((opt, idx) => `
+            <button class="option-btn" onclick="selectOption(${idx})">
+              <span>${['A', 'B', 'C'][idx]}</span>
+              <span>${opt.text}</span>
+            </button>
+          `).join('')}
+        </div>
+        <div class="feedback-msg" id="feedback"></div>
+      `;
+    }
+
+    function selectOption(optIdx) {
+      const q = quizQuestions[currentQuestionIdx];
+      const selected = q.options[optIdx];
+      const buttons = document.querySelectorAll('.option-btn');
+      const feedback = document.getElementById('feedback');
+
+      buttons.forEach((btn, idx) => {
+        btn.disabled = true;
+        if (idx === optIdx) {
+          btn.classList.add(selected.correct ? 'correct' : 'wrong');
+        }
+      });
+
+      if (selected.correct) {
+        feedback.style.color = '#86efac';
+        feedback.textContent = selected.feedback;
+        setTimeout(() => {
+          currentQuestionIdx++;
+          if (currentQuestionIdx < quizQuestions.length) {
+            renderQuestion();
+          } else {
+            startArcadeMode();
+          }
+        }, 1500);
+      } else {
+        feedback.style.color = '#fca5a5';
+        feedback.textContent = selected.feedback;
+        setTimeout(() => {
+          buttons.forEach(btn => btn.disabled = false);
+        }, 1200);
+      }
+    }
+
+    // ── MINI GAME ARCADE (Fase 4) ──
+    let score = 0;
+    let timer = 12;
+    let arcadeInterval = null;
+    let spawnInterval = null;
+
+    function startArcadeMode() {
+      showScreen('screen-arcade');
+      document.getElementById('dot-4').className = 'progress-dot active';
+      score = 0;
+      timer = 12;
+      document.getElementById('arcade-score').textContent = score;
+      document.getElementById('arcade-timer').textContent = timer;
+      
+      const box = document.getElementById('arcade-box');
+      box.innerHTML = '';
+
+      spawnInterval = setInterval(spawnTarget, 500);
+
+      arcadeInterval = setInterval(() => {
+        timer--;
+        document.getElementById('arcade-timer').textContent = timer;
+        if (timer <= 0) {
+          clearInterval(arcadeInterval);
+          clearInterval(spawnInterval);
+          finishGame();
+        }
+      }, 1000);
+    }
+
+    function spawnTarget() {
+      const box = document.getElementById('arcade-box');
+      if (!box || timer <= 0) return;
+
+      const target = document.createElement('div');
+      target.className = 'arcade-target';
+      
+      const items = ['💖', '🔑', '🍊', '👑', '💕', '✨'];
+      target.textContent = items[Math.floor(Math.random() * items.length)];
+
+      const x = Math.random() * (box.clientWidth - 45);
+      const y = Math.random() * (box.clientHeight - 45);
+      target.style.left = x + 'px';
+      target.style.top = y + 'px';
+
+      target.onclick = () => {
+        score += 10;
+        document.getElementById('arcade-score').textContent = score;
+        target.remove();
+      };
+
+      box.appendChild(target);
+
+      setTimeout(() => {
+        if (target.parentNode) target.remove();
+      }, 1200);
+    }
+
+    // ── FINAL DO JOGO & CARTA ──
+    function finishGame() {
+      showScreen('screen-final');
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 150,
+          spread: 100,
+          origin: { y: 0.5 }
+        });
+      }
+    }
+
+    // ── BOTÃO COBRAR BEIJOS ──
+    function giveKiss() {
+      kissCount += 10;
+      document.getElementById('kiss-count').textContent = kissCount;
+
+      // Animação de beijo subindo
+      for (let i = 0; i < 3; i++) {
+        const kiss = document.createElement('div');
+        kiss.className = 'floating-kiss';
+        kiss.textContent = Math.random() > 0.5 ? '😘' : '💋';
+        kiss.style.left = (Math.random() * 80 + 10) + 'vw';
+        kiss.style.top = (Math.random() * 20 + 60) + 'vh';
+        document.body.appendChild(kiss);
+
+        setTimeout(() => kiss.remove(), 1500);
+      }
+
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 30,
+          spread: 60,
+          origin: { y: 0.7 }
+        });
+      }
+    }
+  </script>
+</body>
+</html>
