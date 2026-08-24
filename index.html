@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ana & Lulu — Nosso Cantinho Especial ❤️</title>
-  <meta name="description" content="Um joguinho e uma declaração especial criada com todo o carinho pelo Lulu para a Ana Carolina Manke." />
+  <title>Aninha & Lulu — Nosso Cantinho Especial ❤️</title>
+  <meta name="description" content="Um joguinho e uma declaração especial criada com todo o carinho pelo Lulu para a Aninha." />
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💖</text></svg>" />
@@ -431,25 +431,25 @@
     <!-- SCREEN 1: INTRODUÇÃO -->
     <div id="screen-intro" class="card screen active">
       <div class="badge">
-        <span>💌</span> Para Ana Carolina Manke
+        <span>💌</span> Para a Aninha
       </div>
 
       <h1>Nosso Cantinho & Mini Joguinho ❤️</h1>
 
       <p class="desc">
-        Oi, minha gata! O seu <span class="highlight-ana">Lulu</span> preparou este espaço especial com as nossas piadas internas, nossas lembranças e muito carinho.
+        Oi, minha gata! O seu <span class="highlight-ana">Lulu</span> preparou este espaço especial com as nossas brincadeiras, muito carinho e amor.
       </p>
 
       <div class="joke-chips">
-        <span class="chip">🍊 Tangerina descascada</span>
         <span class="chip">👑 Tratamento de Princesa</span>
-        <span class="chip">🚿 Banho no escuro</span>
-        <span class="chip">🔑 Chaveirinho</span>
-        <span class="chip">☕ Cafeína</span>
+        <span class="chip">🎬 Filmes sem fim</span>
+        <span class="chip">💖 Meiga & Linda</span>
+        <span class="chip">🍊 Tangerina</span>
+        <span class="chip">😘 Beijinhos</span>
       </div>
 
       <button class="btn" onclick="startGame()">
-        <span>🎮</span> Iniciar o Joguinho da Ana!
+        <span>🎮</span> Iniciar o Joguinho da Aninha!
       </button>
     </div>
 
@@ -467,15 +467,15 @@
       </div>
     </div>
 
-    <!-- SCREEN 3: MINI GAME ARCADE (Catar Corações & Chaveirinhos) -->
+    <!-- SCREEN 3: MINI GAME ARCADE (Catar Corações & Beijinhos) -->
     <div id="screen-arcade" class="card screen">
       <div class="badge">
         <span>⚡</span> Desafio Final da Princesa
       </div>
 
-      <h2>Capture os Corações & Chaveirinhos! 🔑💖</h2>
+      <h2>Capture os Corações & Beijinhos! 💖😘</h2>
       <p class="desc" style="font-size: 0.95rem; margin-bottom: 1rem;">
-        Clique rápido nos corações e chaveirinhos para acumular "Pontos de Amor" antes do tempo acabar!
+        Clique rápido nos corações e beijinhos para acumular "Pontos de Amor" antes do tempo acabar!
       </p>
 
       <div class="score-board">
@@ -499,13 +499,13 @@
       <div class="letter-container">
         <div class="letter-header">
           <span>De: Lulu</span>
-          <span>Para: Ana Carolina Manke</span>
+          <span>Para: Aninha</span>
         </div>
 
         <div class="letter-body" id="letter-text">
-"É engraçado pensar que tudo começou com uma simples cantada na balada... e, do nada, você foi deixando de ser 'só uma cantada' e virou a pessoa mais especial da minha vida! 🥹❤️
+"É engraçado pensar que tudo começou com uma simples cantada na balada e, do nada, você foi deixando de ser 'só uma cantada' e virou a pessoa mais especial da minha vida! 🥹❤️
 
-Mesmo nos dias de enxaqueca, banho no escuro e tangerina descascada, saiba que eu amo cuidar de você e te dar todo o tratamento de princesa que você merece.
+Seja nos dias de enxaqueca, de dor de garganta ou muito stress com as influenciadoras, eu amo cuidar de você e te dar todo o tratamento de princesa que você merece.
 
 Eu amo você, minha gata lindona! 🤏🏻❤️"
         </div>
@@ -532,7 +532,7 @@ Eu amo você, minha gata lindona! 🤏🏻❤️"
   <script>
     // ── GERAÇÃO DE CORAÇÕES NO FUNDO ──
     const heartsBg = document.getElementById('hearts-bg');
-    const heartEmojis = ['💖', '💕', '💗', '✨', '🌸', '🍊'];
+    const heartEmojis = ['💖', '💕', '💗', '✨', '🌸', '😘'];
     for (let i = 0; i < 22; i++) {
       const heart = document.createElement('div');
       heart.className = 'bg-heart';
@@ -543,30 +543,30 @@ Eu amo você, minha gata lindona! 🤏🏻❤️"
       heartsBg.appendChild(heart);
     }
 
-    // ── QUESTÕES DO QUIZ (Inside Jokes) ──
+    // ── QUESTÕES DO QUIZ (Personalizados) ──
     const quizQuestions = [
       {
-        question: "1. Como tudo começou entre a Ana e o Lulu?",
+        question: "1. Como tudo começou entre a Aninha e o Lulu?",
         options: [
-          { text: "Com uma cantada lendária na balada (que o Lulu jura que nem sabe fazer!) 💃🍻", correct: true, feedback: "Exatamente! E a Ana fingiu que gostou! 😂❤️" },
-          { text: "Numa fila de supermercado comprando tangerina 🍊", correct: false, feedback: "Quase! Mas foi na balada!" },
+          { text: "Com uma cantada lendária na balada (que o Lulu jura que nem sabe fazer!) 💃🍻", correct: true, feedback: "Exatamente! E a Aninha fingiu que gostou! 😂❤️" },
+          { text: "Numa fila de supermercado comprando tangerina 🍊", correct: false, feedback: "Quase! Mas foi com a cantada na balada!" },
           { text: "Tentando adivinhar quem tomaria mais cafeína ☕", correct: false, feedback: "Não! Foi com a famosa cantada!" }
         ]
       },
       {
-        question: "2. Qual é o kit oficial de tratamento para o domingo de enxaqueca da Ana?",
+        question: "2. O que SEMPRE acontece quando a Aninha vem na casa do Luiz pra assistir um filme?",
         options: [
-          { text: "Correr 10km no sol da tarde ☀️", correct: false, feedback: "Jamais! Tratamento de princesa primeiro!" },
-          { text: "Banho no escuro + Cobertinhas + Tangerina descascada pelo papai + Muita água! 👑🍊💧", correct: true, feedback: "Perfeito! Tratamento VIP de Princesa! 👑✨" },
-          { text: "Comer pimenta e ouvir música alta 🔊", correct: false, feedback: "De jeito nenhum!" }
+          { text: "Eles assistem 3 filmes seguidos em silêncio 🍿", correct: false, feedback: "Errado! Nem conseguem terminar um!" },
+          { text: "Eles nunca conseguem assistir NENHUM filme por completo... porque o Luiz não para de beijar ela! 😘🎬", correct: true, feedback: "Acertou em cheio! Não tem como resistir! 💋❤️" },
+          { text: "Eles dormem logo nos trailers da Netflix 😴", correct: false, feedback: "Não! O Luiz fica cobrando beijos!" }
         ]
       },
       {
-        question: "3. Qual o truque supremo da Ana para ficar quentinha nas cobertas?",
+        question: "3. Por que o Luiz é tão apaixonado e gosta TANTO da Aninha?",
         options: [
-          { text: "Roubar o casaco do pai por cima do pijama curto! 🧥💤", correct: true, feedback: "Acertou! A gata sabe muito! 🥹❤️" },
-          { text: "Ligar 3 aquecedores no máximo 🔥", correct: false, feedback: "O casaco do papai é mais estiloso!" },
-          { text: "Ficar sem cobertas congelando 🥶", correct: false, feedback: "Não! Pijaminha + casaco roubado!" }
+          { text: "Pelo caráter incrível e dedicação dela (fora que ela é super linda, meiga e perfeita)! 🥹❤️", correct: true, feedback: "Com certeza! Ela é perfeita demais! 💖" },
+          { text: "Porque ela gosta de acordar super cedo no domingo ⏰", correct: false, feedback: "Não! É pelo caráter, doçura e beleza dela!" },
+          { text: "Porque ela não se estressa com influenciadoras 📱", correct: false, feedback: "É pela dedicação, caráter e esse jeitinho meigo dela!" }
         ]
       }
     ];
@@ -682,7 +682,7 @@ Eu amo você, minha gata lindona! 🤏🏻❤️"
       const target = document.createElement('div');
       target.className = 'arcade-target';
       
-      const items = ['💖', '🔑', '🍊', '👑', '💕', '✨'];
+      const items = ['💖', '😘', '👑', '🎬', '💕', '✨'];
       target.textContent = items[Math.floor(Math.random() * items.length)];
 
       const x = Math.random() * (box.clientWidth - 45);
